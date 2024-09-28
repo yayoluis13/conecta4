@@ -1,0 +1,103 @@
+body {
+    background-color: #e0e0e0; /* Fondo gris claro */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.titulomo {
+    color: rgba(12, 196, 187, 0.771);
+}
+
+.modo-juego-btn {
+padding: 10px 20px;
+margin: 10px;
+border: none;
+border-radius: 5px;
+background-color: #28045a;
+color: white;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.modo-juego-btn:hover {
+    background-color: #666;
+}
+
+h1 {
+    color: rgba(12, 196, 187, 0.771);
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(7, 100px);
+    grid-template-rows: repeat(6, 100px);
+    gap: 5px;
+    margin: 20px auto; /* Centrar el tablero */
+    background-color: rgba(16, 9, 57, 0.905); /* Fondo gris metálico */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra del tablero */
+    width: fit-content; /* Ajustar el ancho del tablero al contenido */
+}
+
+.reglas {
+    display: flex;               /* Usamos flexbox para centrar el contenido */
+    justify-content: center;     /* Centra horizontalmente */
+    align-items: center;         /* Centra verticalmente */
+    color: rgba(20, 73, 158, 0.904);          /* Color del texto */
+    margin: 20px auto;          /* Márgenes superior e inferior y centrado automático */
+    text-align: center;          /* Asegura que el texto dentro del párrafo esté centrado */
+    padding: 0 20px;            /* Añade espacio a los lados del texto */
+    width: 100%;                 /* Asegura que ocupe todo el ancho del contenedor */
+    box-sizing: border-box;      /* Incluye el padding en el ancho total */
+}
+
+.celda {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s; /* Efecto de transformación */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Sombra de las celdas */
+}
+
+.celda:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.roja {
+    background-color: rgba(190, 65, 12, 0.84);
+    box-shadow: 0 5px 10px rgba(255, 0, 0, 0.5); /* Sombra para fichas rojas */
+}
+
+.amarilla {
+    background-color: rgb(171, 182, 25);
+    box-shadow: 0 5px 10px rgba(43, 255, 0, 0.5); /* Sombra para fichas amarillas */
+}
+
+#contador {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(63, 30, 133, 0.863);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #bf1fca; /* Color de fondo al pasar el mouse */
+}

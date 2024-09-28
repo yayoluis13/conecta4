@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Seleccionar Modo de Juego</title>
+    <style>
+        /* Estilo para ocultar el contenedor del juego inicialmente */
+        #juegoContainer {
+            display: none; /* Oculta el contenedor del juego al inicio */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulomo">Selecciona el Modo de Juego</h1>
+    <button class="modo-juego-btn" id="jugarSolo">Jugar Solo</button>
+    <button class="modo-juego-btn" id="jugarMultijugador">Jugar Multijugador</button>
+
+    <div id="juegoContainer">
+        <h1>Conecta 4</h1>
+        <h2 style="color: rgb(15, 83, 61);">REGLAS DEL JUEGO</h2>
+        <p class="reglas"> Para ganar debes conectar 4 veces el mismo color en una fila, <br>puede ser en cualquier dirección vertical, horizontal, diagonal el adversario debe impedirlo o intentar ganar en su defecto.</p>
+        <div id="tablero"></div>
+        <div id="contador">
+            <p>Victorias Rojas: <span id="victoriasRojas">0</span></p>
+            <p>Victorias Amarillas: <span id="victoriasAmarillas">0</span></p>
+            <button onclick="reiniciarPartida()">Reiniciar Partida</button>
+            <button onclick="resetearContador()">Resetear Contador</button>
+        </div>
+    </div>
+
+    <script>
+        let modoJuego;
+
+        // Función para cargar el script correspondiente
+        function cargarScript(script) {
+            const scriptElement = document.createElement('script');
+            scriptElement.src = script;
+            document.body.appendChild(scriptElement);
+        }
+
+        // Función para iniciar el juego en modo solo
+        function iniciarJuegoSolo() {
+            modoJuego = 'solo';
+            document.getElementById('juegoContainer').style.display = 'block'; // Mostrar el contenedor del juego
+            ocultareglas(); // Ocultar las reglas
+            document.getElementById('tablero').innerHTML = '<p>Juego en modo solo activado.</p>';
+            cargarScript('conectasolo.js'); // Cargar el script para el modo solo
+            console.log("Iniciando juego en modo solo...");
+
+            // Oculta los botones de modalidad
+            ocultarBotonesModoJuego();
+            ocultarTitulo(); // Oculta el título
+        }
+
+        // Función para iniciar el juego en modo multijugador
+        function iniciarJuegoMultijugador() {
+            modoJuego = 'multijugador';
+            document.getElementById('juegoContainer').style.display = 'block'; // Mostrar el contenedor del juego
+            ocultareglas(); // Ocultar las reglas
+            cargarScript('conecta4.js'); // Cargar el script para el modo multijugador
+            console.log("Iniciando juego en modo multijugador...");
+
+            // Oculta los botones de modalidad
+            ocultarBotonesModoJuego();
+            ocultarTitulo(); // Oculta el título
+        }
+
+        // Función para ocultar los botones de modalidad
+        function ocultarBotonesModoJuego() {
+            const botonesModoJuego = document.querySelectorAll('.modo-juego-btn');
+            botonesModoJuego.forEach(btn => btn.style.display = 'none');
+        }
+
+        // Función para ocultar el título
+        function ocultarTitulo() {
+            const titulo = document.querySelector('.titulomo');
+            titulo.style.display = 'none'; // Oculta el título
+        }
+
+        // Función para ocultar las reglas
+        function ocultareglas() {
+            const reglas = document.querySelector('.reglas');
+            reglas.style.display = 'none'; // Oculta las reglas
+        }
+
+        // Funciones para reiniciar la partida y resetear el contador
+        function reiniciarPartida() {
+            console.log("Partida reiniciada.");
+            // Aquí puedes añadir más lógica para reiniciar el tablero
+            document.getElementById('tablero').innerHTML = ''; // Limpiar el tablero
+        }
+
+        function resetearContador() {
+            document.getElementById('victoriasRojas').innerText = '0';
+            document.getElementById('victoriasAmarillas').innerText = '0';
+            console.log("Contador reseteado.");
+        }
+
+        // Eventos para los botones
+        document.getElementById('jugarSolo').addEventListener('click', iniciarJuegoSolo);
+        document.getElementById('jugarMultijugador').addEventListener('click', iniciarJuegoMultijugador);
+    </script>
+</body>
+</html>
